@@ -1,0 +1,63 @@
+﻿@model IEnumerable<iMovie.Models.Cart>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<body background="\uploads\cinema3.jpg">
+    <h2>Szczegóły zamówienia:</h2>
+
+
+    <form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.seatno)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MovieID)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.seatno)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MovieID)
+                        </td>
+                        <td>
+
+                            <a asp-action="Delete" asp-route-id="@item.ID" asp-controller="CartT">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <input type="submit" value="Podsumuj" asp-action="proceed" asp-controller="CartT" />
+        </div>
+    </form>
+</body>

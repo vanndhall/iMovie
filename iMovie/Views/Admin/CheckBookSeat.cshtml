@@ -1,0 +1,63 @@
+﻿@model IEnumerable<iMovie.Models.BookingTable>
+
+@{
+    ViewData["Title"] = "CheckBookSeat";
+}
+<body background="\uploads\cinema3.jpg">
+    <h2>Lista rezerwacji:</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.seatno)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Datetopresent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MovieDetailsId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.seatno)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Datetopresent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MovieDetailsId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@item.ID" asp-controller="Admin">Delete</a>
+                        @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
